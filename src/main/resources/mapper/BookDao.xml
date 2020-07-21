@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dulao.dao.BookDao">
+
+    <resultMap type="net.dulao.entity.Book" id="BookMap">
+        <result property="bId" column="b_id" jdbcType="INTEGER"/>
+        <result property="bName" column="b_name" jdbcType="VARCHAR"/>
+        <result property="bType" column="b_type" jdbcType="VARCHAR"/>
+        <result property="bAuthor" column="b_author" jdbcType="VARCHAR"/>
+        <result property="bImage" column="b_image" jdbcType="VARCHAR"/>
+        <result property="bDescribe" column="b_describe" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BookMap">
+        select b_id,
+               b_name,
+               b_type,
+               b_author,
+               b_image,
+               b_describe
+        from ssm.book
+        where b_id = #{bId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BookMap">
+        select b_id,
+               b_name,
+               b_type,
+               b_author,
+               b_image,
+               b_describe
+        from ssm.book
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BookMap">
+        select
+        b_id, b_name, b_type, b_author, b_image, b_describe
+        from ssm.book
+        <where>
+            <if test="bId != null">
+                and b_id = #{bId}
+            </if>
+            <if test="bName != null and bName != ''">
+                and b_name = #{bName}
+            </if>
+            <if test="bType != null and bType != ''">
+                and b_type = #{bType}
+            </if>
+            <if test="bAuthor != null and bAuthor != ''">
+                and b_author = #{bAuthor}
+            </if>
+            <if test="bImage != null and bImage != ''">
+                and b_image = #{bImage}
+            </if>
+            <if test="bDescribe != null and bDescribe != ''">
+                and b_describe = #{bDescribe}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="bId" useGeneratedKeys="true">
+        insert into ssm.book(b_name, b_type, b_author, b_image, b_describe)
+        values (#{bName}, #{bType}, #{bAuthor}, #{bImage}, #{bDescribe})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update ssm.book
+        <set>
+            <if test="bName != null and bName != ''">
+                b_name = #{bName},
+            </if>
+            <if test="bType != null and bType != ''">
+                b_type = #{bType},
+            </if>
+            <if test="bAuthor != null and bAuthor != ''">
+                b_author = #{bAuthor},
+            </if>
+            <if test="bImage != null and bImage != ''">
+                b_image = #{bImage},
+            </if>
+            <if test="bDescribe != null and bDescribe != ''">
+                b_describe = #{bDescribe},
+            </if>
+        </set>
+        where b_id = #{bId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from ssm.book
+        where b_id = #{bId}
+    </delete>
+
+</mapper>

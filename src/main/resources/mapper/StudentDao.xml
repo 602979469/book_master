@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dulao.dao.StudentDao">
+
+    <resultMap type="net.dulao.entity.Student" id="StudentMap">
+        <result property="sId" column="s_id" jdbcType="INTEGER"/>
+        <result property="sUsername" column="s_username" jdbcType="VARCHAR"/>
+        <result property="sPassword" column="s_password" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="StudentMap">
+        select s_id,
+               s_username,
+               s_password
+        from ssm.student
+        where s_id = #{sId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="StudentMap">
+        select s_id,
+               s_username,
+               s_password
+        from ssm.student
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="StudentMap">
+        select
+        s_id, s_username, s_password
+        from ssm.student
+        <where>
+            <if test="sId != null">
+                and s_id = #{sId}
+            </if>
+            <if test="sUsername != null and sUsername != ''">
+                and s_username = #{sUsername}
+            </if>
+            <if test="sPassword != null and sPassword != ''">
+                and s_password = #{sPassword}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="sId" useGeneratedKeys="true">
+        insert into ssm.student(s_username, s_password)
+        values (#{sUsername}, #{sPassword})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update ssm.student
+        <set>
+            <if test="sUsername != null and sUsername != ''">
+                s_username = #{sUsername},
+            </if>
+            <if test="sPassword != null and sPassword != ''">
+                s_password = #{sPassword},
+            </if>
+        </set>
+        where s_id = #{sId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from ssm.student
+        where s_id = #{sId}
+    </delete>
+
+</mapper>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.dulao.dao.LendDao">
+
+    <resultMap type="net.dulao.entity.Lend" id="LendMap">
+        <result property="lId" column="l_id" jdbcType="INTEGER"/>
+        <result property="lStudent" column="l_student" jdbcType="INTEGER"/>
+        <result property="lBook" column="l_book" jdbcType="INTEGER"/>
+        <result property="lLendtime" column="l_lendtime" jdbcType="TIMESTAMP"/>
+        <result property="lBacktime" column="l_backtime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="LendMap">
+        select l_id,
+               l_student,
+               l_book,
+               l_lendtime,
+               l_backtime
+        from ssm.lend
+        where l_id = #{lId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="LendMap">
+        select l_id,
+               l_student,
+               l_book,
+               l_lendtime,
+               l_backtime
+        from ssm.lend
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="LendMap">
+        select
+        l_id, l_student, l_book, l_lendtime, l_backtime
+        from ssm.lend
+        <where>
+            <if test="lId != null">
+                and l_id = #{lId}
+            </if>
+            <if test="lStudent != null">
+                and l_student = #{lStudent}
+            </if>
+            <if test="lBook != null">
+                and l_book = #{lBook}
+            </if>
+            <if test="lLendtime != null">
+                and l_lendtime = #{lLendtime}
+            </if>
+            <if test="lBacktime != null">
+                and l_backtime = #{lBacktime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="lId" useGeneratedKeys="true">
+        insert into ssm.lend(l_student, l_book, l_lendtime, l_backtime)
+        values (#{lStudent}, #{lBook}, #{lLendtime}, #{lBacktime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update ssm.lend
+        <set>
+            <if test="lStudent != null">
+                l_student = #{lStudent},
+            </if>
+            <if test="lBook != null">
+                l_book = #{lBook},
+            </if>
+            <if test="lLendtime != null">
+                l_lendtime = #{lLendtime},
+            </if>
+            <if test="lBacktime != null">
+                l_backtime = #{lBacktime},
+            </if>
+        </set>
+        where l_id = #{lId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from ssm.lend
+        where l_id = #{lId}
+    </delete>
+
+</mapper>
