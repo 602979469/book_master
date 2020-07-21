@@ -8,7 +8,7 @@ import java.util.List;
  * (Book)表服务接口
  *
  * @author makejava
- * @since 2020-07-21 17:15:29
+ * @since 2020-07-21 17:47:07
  */
 public interface BookService {
 
@@ -35,7 +35,7 @@ public interface BookService {
      * @param book 实例对象
      * @return 实例对象
      */
-    Book insert(Book book);
+    boolean insert(Book book);
 
     /**
      * 修改数据
@@ -43,7 +43,7 @@ public interface BookService {
      * @param book 实例对象
      * @return 实例对象
      */
-    Book update(Book book);
+    boolean update(Book book);
 
     /**
      * 通过主键删除数据
@@ -53,4 +53,8 @@ public interface BookService {
      */
     boolean deleteById(Integer bId);
 
+
+    List<Book> queryByName(String name);
+
+    List<Book> queryAll();
 }

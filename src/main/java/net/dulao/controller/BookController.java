@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Book)表控制层
  *
  * @author makejava
- * @since 2020-07-21 17:15:29
+ * @since 2020-07-21 17:47:07
  */
 @RestController
 @RequestMapping("book")
@@ -29,9 +30,47 @@ public class BookController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("selectOne")
-    public Book selectOne(Integer id) {
+    @GetMapping("selectById")
+    public Book selectById(Integer id) {
         return this.bookService.queryById(id);
     }
 
+    @GetMapping("selectByName")
+    public List<Book> selectByName(String name){
+        return this.bookService.queryByName(name);
+    }
+
+    @GetMapping("selectAll")
+    public List<Book> selectAll(){
+        return this.bookService.queryAll();
+    }
+
+    @GetMapping("selectByLimit")
+    public List<Book> selectByLimit(Integer offset,Integer limit){
+        return this.bookService.queryAllByLimit(offset,limit);
+    }
+
+    @GetMapping("insert")
+    public String insert(Book book){
+        if (bookService.insert(book)){
+            return "success";
+        }
+        return "fail";
+    }
+
+    @GetMapping("update")
+    public String update(Book book){
+        if (bookService.update(book)){
+            return "success";
+        }
+        return "fail";
+    }
+
+    @GetMapping("delete")
+    public String delete(Integer id){
+        if (bookService.deleteById(id)){
+            return "success";
+        }
+        return "fail";
+    }
 }

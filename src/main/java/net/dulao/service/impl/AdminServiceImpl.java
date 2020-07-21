@@ -49,9 +49,9 @@ public class AdminServiceImpl implements AdminService {
      * @return 实例对象
      */
     @Override
-    public Admin insert(Admin admin) {
-        this.adminDao.insert(admin);
-        return admin;
+    public boolean insert(Admin admin) {
+
+        return this.adminDao.insert(admin)>0;
     }
 
     /**
@@ -61,9 +61,9 @@ public class AdminServiceImpl implements AdminService {
      * @return 实例对象
      */
     @Override
-    public Admin update(Admin admin) {
-        this.adminDao.update(admin);
-        return this.queryById(admin.getMId());
+    public boolean update(Admin admin) {
+
+        return this.adminDao.update(admin)>0;
     }
 
     /**
@@ -75,5 +75,18 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public boolean deleteById(Integer mId) {
         return this.adminDao.deleteById(mId) > 0;
+    }
+
+    @Override
+    public List<Admin> queryByUsername(String username) {
+        Admin admin = new Admin();
+        admin.setMUsername(username);
+        return this.adminDao.queryAll(admin);
+    }
+
+    @Override
+    public List<Admin> queryAll() {
+        Admin admin = new Admin();
+        return this.adminDao.queryAll(admin);
     }
 }

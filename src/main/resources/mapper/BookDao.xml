@@ -5,8 +5,6 @@
     <resultMap type="net.dulao.entity.Book" id="BookMap">
         <result property="bId" column="b_id" jdbcType="INTEGER"/>
         <result property="bName" column="b_name" jdbcType="VARCHAR"/>
-        <result property="bType" column="b_type" jdbcType="VARCHAR"/>
-        <result property="bAuthor" column="b_author" jdbcType="VARCHAR"/>
         <result property="bImage" column="b_image" jdbcType="VARCHAR"/>
         <result property="bDescribe" column="b_describe" jdbcType="VARCHAR"/>
     </resultMap>
@@ -15,8 +13,6 @@
     <select id="queryById" resultMap="BookMap">
         select b_id,
                b_name,
-               b_type,
-               b_author,
                b_image,
                b_describe
         from ssm.book
@@ -27,8 +23,6 @@
     <select id="queryAllByLimit" resultMap="BookMap">
         select b_id,
                b_name,
-               b_type,
-               b_author,
                b_image,
                b_describe
         from ssm.book
@@ -38,7 +32,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BookMap">
         select
-        b_id, b_name, b_type, b_author, b_image, b_describe
+        b_id, b_name, b_image, b_describe
         from ssm.book
         <where>
             <if test="bId != null">
@@ -46,12 +40,6 @@
             </if>
             <if test="bName != null and bName != ''">
                 and b_name = #{bName}
-            </if>
-            <if test="bType != null and bType != ''">
-                and b_type = #{bType}
-            </if>
-            <if test="bAuthor != null and bAuthor != ''">
-                and b_author = #{bAuthor}
             </if>
             <if test="bImage != null and bImage != ''">
                 and b_image = #{bImage}
@@ -64,8 +52,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="bId" useGeneratedKeys="true">
-        insert into ssm.book(b_name, b_type, b_author, b_image, b_describe)
-        values (#{bName}, #{bType}, #{bAuthor}, #{bImage}, #{bDescribe})
+        insert into ssm.book(b_name, b_image, b_describe)
+        values (#{bName}, #{bImage}, #{bDescribe})
     </insert>
 
     <!--通过主键修改数据-->
@@ -74,12 +62,6 @@
         <set>
             <if test="bName != null and bName != ''">
                 b_name = #{bName},
-            </if>
-            <if test="bType != null and bType != ''">
-                b_type = #{bType},
-            </if>
-            <if test="bAuthor != null and bAuthor != ''">
-                b_author = #{bAuthor},
             </if>
             <if test="bImage != null and bImage != ''">
                 b_image = #{bImage},

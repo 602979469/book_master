@@ -7,10 +7,10 @@ import java.util.Date;
  * (Lend)实体类
  *
  * @author makejava
- * @since 2020-07-21 17:15:30
+ * @since 2020-07-21 18:18:50
  */
 public class Lend implements Serializable {
-    private static final long serialVersionUID = -48520065593604467L;
+    private static final long serialVersionUID = 162859199297032476L;
 
     private Integer lId;
 

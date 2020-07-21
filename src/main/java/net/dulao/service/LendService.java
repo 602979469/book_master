@@ -35,7 +35,7 @@ public interface LendService {
      * @param lend 实例对象
      * @return 实例对象
      */
-    Lend insert(Lend lend);
+    boolean insert(Lend lend);
 
     /**
      * 修改数据
@@ -43,7 +43,7 @@ public interface LendService {
      * @param lend 实例对象
      * @return 实例对象
      */
-    Lend update(Lend lend);
+    boolean update(Lend lend);
 
     /**
      * 通过主键删除数据
@@ -52,5 +52,9 @@ public interface LendService {
      * @return 是否成功
      */
     boolean deleteById(Integer lId);
+
+    List<Lend> queryByStudent(Integer id);
+    List<Lend> queryByBook(Integer id);
+    List<Lend> queryAll();
 
 }

@@ -49,9 +49,8 @@ public class StudentServiceImpl implements StudentService {
      * @return 实例对象
      */
     @Override
-    public Student insert(Student student) {
-        this.studentDao.insert(student);
-        return student;
+    public boolean insert(Student student) {
+        return this.studentDao.insert(student)>0;
     }
 
     /**
@@ -61,9 +60,8 @@ public class StudentServiceImpl implements StudentService {
      * @return 实例对象
      */
     @Override
-    public Student update(Student student) {
-        this.studentDao.update(student);
-        return this.queryById(student.getSId());
+    public boolean update(Student student) {
+        return this.studentDao.update(student)>0;
     }
 
     /**
@@ -75,5 +73,18 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public boolean deleteById(Integer sId) {
         return this.studentDao.deleteById(sId) > 0;
+    }
+
+    @Override
+    public List<Student> queryByUsername(String username) {
+        Student student = new Student();
+        student.setSUsername(username);
+        return this.studentDao.queryAll(student);
+    }
+
+    @Override
+    public List<Student> queryAll() {
+        Student student = new Student();
+        return this.studentDao.queryAll(student);
     }
 }

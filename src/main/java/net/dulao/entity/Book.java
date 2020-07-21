@@ -6,18 +6,14 @@ import java.io.Serializable;
  * (Book)实体类
  *
  * @author makejava
- * @since 2020-07-21 17:15:29
+ * @since 2020-07-21 18:18:50
  */
 public class Book implements Serializable {
-    private static final long serialVersionUID = -96139269559550741L;
+    private static final long serialVersionUID = -10247387134098543L;
 
     private Integer bId;
 
     private String bName;
-
-    private String bType;
-
-    private String bAuthor;
 
     private String bImage;
 
@@ -38,22 +34,6 @@ public class Book implements Serializable {
 
     public void setBName(String bName) {
         this.bName = bName;
-    }
-
-    public String getBType() {
-        return bType;
-    }
-
-    public void setBType(String bType) {
-        this.bType = bType;
-    }
-
-    public String getBAuthor() {
-        return bAuthor;
-    }
-
-    public void setBAuthor(String bAuthor) {
-        this.bAuthor = bAuthor;
     }
 
     public String getBImage() {

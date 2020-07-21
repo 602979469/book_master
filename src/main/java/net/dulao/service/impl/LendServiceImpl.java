@@ -49,9 +49,8 @@ public class LendServiceImpl implements LendService {
      * @return 实例对象
      */
     @Override
-    public Lend insert(Lend lend) {
-        this.lendDao.insert(lend);
-        return lend;
+    public boolean insert(Lend lend) {
+        return this.lendDao.insert(lend)>0;
     }
 
     /**
@@ -61,9 +60,8 @@ public class LendServiceImpl implements LendService {
      * @return 实例对象
      */
     @Override
-    public Lend update(Lend lend) {
-        this.lendDao.update(lend);
-        return this.queryById(lend.getLId());
+    public boolean update(Lend lend) {
+        return this.lendDao.update(lend)>0;
     }
 
     /**
@@ -75,5 +73,25 @@ public class LendServiceImpl implements LendService {
     @Override
     public boolean deleteById(Integer lId) {
         return this.lendDao.deleteById(lId) > 0;
+    }
+
+    @Override
+    public List<Lend> queryByStudent(Integer id) {
+        Lend lend = new Lend();
+        lend.setLBook(id);
+        return this.lendDao.queryAll(lend);
+    }
+
+    @Override
+    public List<Lend> queryByBook(Integer id) {
+        Lend lend = new Lend();
+        lend.setLStudent(id);
+        return this.lendDao.queryAll(lend);
+    }
+
+    @Override
+    public List<Lend> queryAll() {
+        Lend lend = new Lend();
+        return this.lendDao.queryAll(lend);
     }
 }

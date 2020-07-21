@@ -12,7 +12,7 @@ import java.util.List;
  * (Book)表服务实现类
  *
  * @author makejava
- * @since 2020-07-21 17:15:29
+ * @since 2020-07-21 17:47:07
  */
 @Service("bookService")
 public class BookServiceImpl implements BookService {
@@ -49,9 +49,9 @@ public class BookServiceImpl implements BookService {
      * @return 实例对象
      */
     @Override
-    public Book insert(Book book) {
-        this.bookDao.insert(book);
-        return book;
+    public boolean insert(Book book) {
+
+        return this.bookDao.insert(book)>0;
     }
 
     /**
@@ -61,9 +61,9 @@ public class BookServiceImpl implements BookService {
      * @return 实例对象
      */
     @Override
-    public Book update(Book book) {
-        this.bookDao.update(book);
-        return this.queryById(book.getBId());
+    public boolean update(Book book) {
+
+        return this.bookDao.update(book)>0;
     }
 
     /**
@@ -75,5 +75,19 @@ public class BookServiceImpl implements BookService {
     @Override
     public boolean deleteById(Integer bId) {
         return this.bookDao.deleteById(bId) > 0;
+    }
+
+
+    @Override
+    public List<Book> queryByName(String name) {
+        Book book = new Book();
+        book.setBName(name);
+        return this.bookDao.queryAll(book);
+    }
+
+    @Override
+    public List<Book> queryAll() {
+        Book book = new Book();
+        return this.bookDao.queryAll(book);
     }
 }

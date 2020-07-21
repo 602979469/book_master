@@ -35,7 +35,7 @@ public interface AdminService {
      * @param admin 实例对象
      * @return 实例对象
      */
-    Admin insert(Admin admin);
+    boolean insert(Admin admin);
 
     /**
      * 修改数据
@@ -43,7 +43,7 @@ public interface AdminService {
      * @param admin 实例对象
      * @return 实例对象
      */
-    Admin update(Admin admin);
+    boolean update(Admin admin);
 
     /**
      * 通过主键删除数据
@@ -52,5 +52,9 @@ public interface AdminService {
      * @return 是否成功
      */
     boolean deleteById(Integer mId);
+
+    List<Admin> queryByUsername(String username);
+
+    List<Admin> queryAll();
 
 }

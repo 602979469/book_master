@@ -35,7 +35,7 @@ public interface StudentService {
      * @param student 实例对象
      * @return 实例对象
      */
-    Student insert(Student student);
+    boolean insert(Student student);
 
     /**
      * 修改数据
@@ -43,7 +43,7 @@ public interface StudentService {
      * @param student 实例对象
      * @return 实例对象
      */
-    Student update(Student student);
+    boolean update(Student student);
 
     /**
      * 通过主键删除数据
@@ -52,5 +52,9 @@ public interface StudentService {
      * @return 是否成功
      */
     boolean deleteById(Integer sId);
+
+    List<Student> queryByUsername(String username);
+
+    List<Student> queryAll();
 
 }

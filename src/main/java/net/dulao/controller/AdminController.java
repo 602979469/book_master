@@ -1,6 +1,5 @@
 package net.dulao.controller;
 
-import net.dulao.entity.Admin;
 import net.dulao.service.AdminService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,15 +22,10 @@ public class AdminController {
     @Resource
     private AdminService adminService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Admin selectOne(Integer id) {
-        return this.adminService.queryById(id);
+    @GetMapping("login")
+    public String login(String username,String password){
+        if(adminService.queryByUsername(username).get(0).getMPassword().equals(password))
+            return "success";
+        return "fail";
     }
-
 }

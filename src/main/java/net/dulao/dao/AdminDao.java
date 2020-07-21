@@ -9,7 +9,7 @@ import java.util.List;
  * (Admin)表数据库访问层
  *
  * @author makejava
- * @since 2020-07-21 17:15:28
+ * @since 2020-07-21 18:18:50
  */
 public interface AdminDao {
 
