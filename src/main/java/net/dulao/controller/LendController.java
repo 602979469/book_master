@@ -16,7 +16,7 @@ import java.util.List;
  * @since 2020-07-21 17:15:30
  */
 @RestController
-@RequestMapping("lend")
+@RequestMapping("lendHandler")
 public class LendController {
     /**
      * 服务对象

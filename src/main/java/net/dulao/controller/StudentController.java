@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * @since 2020-07-21 17:15:31
  */
 @RestController
-@RequestMapping("student")
+@RequestMapping("studentHandler")
 public class StudentController {
     /**
      * 服务对象

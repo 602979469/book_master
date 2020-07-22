@@ -16,7 +16,7 @@ import java.util.List;
  * @since 2020-07-21 17:47:07
  */
 @RestController
-@RequestMapping("book")
+@RequestMapping("bookHandler")
 public class BookController {
     /**
      * 服务对象
