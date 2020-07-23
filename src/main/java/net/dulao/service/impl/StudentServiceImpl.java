@@ -75,6 +75,12 @@ public class StudentServiceImpl implements StudentService {
         return this.studentDao.deleteById(sId) > 0;
     }
 
+    /**
+     * 查询用户名
+     *
+     * @param username 用户名
+     * @return {@link List<Student>}
+     */
     @Override
     public List<Student> queryByUsername(String username) {
         Student student = new Student();
@@ -82,6 +88,11 @@ public class StudentServiceImpl implements StudentService {
         return this.studentDao.queryAll(student);
     }
 
+    /**
+     * 查询所有
+     *
+     * @return {@link List<Student>}
+     */
     @Override
     public List<Student> queryAll() {
         Student student = new Student();

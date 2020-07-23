@@ -1,55 +1,49 @@
 package net.dulao.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.io.Serializable;
 
 /**
+ * 书
  * (Book)实体类
  *
  * @author makejava
+ * @date 2020/07/23
  * @since 2020-07-21 18:18:50
  */
+@Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book implements Serializable {
+    /**
+     * 串行版本uid
+     */
     private static final long serialVersionUID = -10247387134098543L;
 
+    /**
+     * b id
+     */
     private Integer bId;
 
+    /**
+     * b的名字
+     */
     private String bName;
 
+    /**
+     * b图像
+     */
     private String bImage;
 
+    /**
+     * b描述
+     */
     private String bDescribe;
 
-
-    public Integer getBId() {
-        return bId;
-    }
-
-    public void setBId(Integer bId) {
-        this.bId = bId;
-    }
-
-    public String getBName() {
-        return bName;
-    }
-
-    public void setBName(String bName) {
-        this.bName = bName;
-    }
-
-    public String getBImage() {
-        return bImage;
-    }
-
-    public void setBImage(String bImage) {
-        this.bImage = bImage;
-    }
-
-    public String getBDescribe() {
-        return bDescribe;
-    }
-
-    public void setBDescribe(String bDescribe) {
-        this.bDescribe = bDescribe;
-    }
 
 }

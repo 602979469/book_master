@@ -1,14 +1,25 @@
 package net.dulao.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 借
  * (Lend)实体类
  *
  * @author makejava
+ * @date 2020/07/23
  * @since 2020-07-21 18:18:50
  */
+@Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Lend implements Serializable {
     private static final long serialVersionUID = 162859199297032476L;
 
@@ -23,44 +34,5 @@ public class Lend implements Serializable {
     private Date lBacktime;
 
 
-    public Integer getLId() {
-        return lId;
-    }
-
-    public void setLId(Integer lId) {
-        this.lId = lId;
-    }
-
-    public Integer getLStudent() {
-        return lStudent;
-    }
-
-    public void setLStudent(Integer lStudent) {
-        this.lStudent = lStudent;
-    }
-
-    public Integer getLBook() {
-        return lBook;
-    }
-
-    public void setLBook(Integer lBook) {
-        this.lBook = lBook;
-    }
-
-    public Date getLLendtime() {
-        return lLendtime;
-    }
-
-    public void setLLendtime(Date lLendtime) {
-        this.lLendtime = lLendtime;
-    }
-
-    public Date getLBacktime() {
-        return lBacktime;
-    }
-
-    public void setLBacktime(Date lBacktime) {
-        this.lBacktime = lBacktime;
-    }
 
 }

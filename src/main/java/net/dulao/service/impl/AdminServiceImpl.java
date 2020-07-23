@@ -77,6 +77,12 @@ public class AdminServiceImpl implements AdminService {
         return this.adminDao.deleteById(mId) > 0;
     }
 
+    /**
+     * 查询用户名
+     *
+     * @param username 用户名
+     * @return {@link List<Admin>}
+     */
     @Override
     public List<Admin> queryByUsername(String username) {
         Admin admin = new Admin();
@@ -84,6 +90,11 @@ public class AdminServiceImpl implements AdminService {
         return this.adminDao.queryAll(admin);
     }
 
+    /**
+     * 查询所有
+     *
+     * @return {@link List<Admin>}
+     */
     @Override
     public List<Admin> queryAll() {
         Admin admin = new Admin();

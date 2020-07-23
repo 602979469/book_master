@@ -75,6 +75,12 @@ public class LendServiceImpl implements LendService {
         return this.lendDao.deleteById(lId) > 0;
     }
 
+    /**
+     * 查询学生
+     *
+     * @param id id
+     * @return {@link List<Lend>}
+     */
     @Override
     public List<Lend> queryByStudent(Integer id) {
         Lend lend = new Lend();
@@ -82,6 +88,12 @@ public class LendServiceImpl implements LendService {
         return this.lendDao.queryAll(lend);
     }
 
+    /**
+     * 查询书
+     *
+     * @param id id
+     * @return {@link List<Lend>}
+     */
     @Override
     public List<Lend> queryByBook(Integer id) {
         Lend lend = new Lend();
@@ -89,6 +101,11 @@ public class LendServiceImpl implements LendService {
         return this.lendDao.queryAll(lend);
     }
 
+    /**
+     * 查询所有
+     *
+     * @return {@link List<Lend>}
+     */
     @Override
     public List<Lend> queryAll() {
         Lend lend = new Lend();

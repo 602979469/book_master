@@ -5,9 +5,11 @@ import net.dulao.entity.Book;
 import java.util.List;
 
 /**
+ * 书服务
  * (Book)表服务接口
  *
  * @author makejava
+ * @date 2020/07/23
  * @since 2020-07-21 17:47:07
  */
 public interface BookService {
@@ -54,7 +56,18 @@ public interface BookService {
     boolean deleteById(Integer bId);
 
 
+    /**
+     * 按名称查询
+     *
+     * @param name 的名字
+     * @return {@link List<Book>}
+     */
     List<Book> queryByName(String name);
 
+    /**
+     * 查询所有
+     *
+     * @return {@link List<Book>}
+     */
     List<Book> queryAll();
 }

@@ -53,8 +53,27 @@ public interface LendService {
      */
     boolean deleteById(Integer lId);
 
+    /**
+     * 查询学生
+     *
+     * @param id id
+     * @return {@link List<Lend>}
+     */
     List<Lend> queryByStudent(Integer id);
+
+    /**
+     * 查询书
+     *
+     * @param id id
+     * @return {@link List<Lend>}
+     */
     List<Lend> queryByBook(Integer id);
+
+    /**
+     * 查询所有
+     *
+     * @return {@link List<Lend>}
+     */
     List<Lend> queryAll();
 
 }

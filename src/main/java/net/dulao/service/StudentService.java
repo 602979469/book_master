@@ -53,8 +53,19 @@ public interface StudentService {
      */
     boolean deleteById(Integer sId);
 
+    /**
+     * 查询用户名
+     *
+     * @param username 用户名
+     * @return {@link List<Student>}
+     */
     List<Student> queryByUsername(String username);
 
+    /**
+     * 查询所有
+     *
+     * @return {@link List<Student>}
+     */
     List<Student> queryAll();
 
 }

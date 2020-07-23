@@ -78,6 +78,12 @@ public class BookServiceImpl implements BookService {
     }
 
 
+    /**
+     * 按名称查询
+     *
+     * @param name 的名字
+     * @return {@link List<Book>}
+     */
     @Override
     public List<Book> queryByName(String name) {
         Book book = new Book();
@@ -85,6 +91,11 @@ public class BookServiceImpl implements BookService {
         return this.bookDao.queryAll(book);
     }
 
+    /**
+     * 查询所有
+     *
+     * @return {@link List<Book>}
+     */
     @Override
     public List<Book> queryAll() {
         Book book = new Book();

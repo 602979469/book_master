@@ -5,9 +5,11 @@ import net.dulao.entity.Admin;
 import java.util.List;
 
 /**
+ * 管理服务
  * (Admin)表服务接口
  *
  * @author makejava
+ * @date 2020/07/23
  * @since 2020-07-21 17:15:28
  */
 public interface AdminService {
@@ -53,8 +55,19 @@ public interface AdminService {
      */
     boolean deleteById(Integer mId);
 
+    /**
+     * 查询用户名
+     *
+     * @param username 用户名
+     * @return {@link List<Admin>}
+     */
     List<Admin> queryByUsername(String username);
 
+    /**
+     * 查询所有
+     *
+     * @return {@link List<Admin>}
+     */
     List<Admin> queryAll();
 
 }
